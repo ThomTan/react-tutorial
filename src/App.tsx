@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface OwnState {
+  count: number;
 }
 
-export default App;
+export default class App extends Component<{}, OwnState> {
+  // constructor(props: {}) {
+  //   super(props);
+  //   this.state = { count: 1 };
+  // }
+
+  readonly state = { count: 1 };
+
+  // state: OwnState;
+  // constructor(props: {}) {
+  //   super(props);
+  //   this.state = { count: 1 };
+  // }
+
+  onClicked(type: string) {
+    let g = this.state.count;
+    switch (type) {
+      case 'jia':
+        g++;
+        break;
+      case 'jian':
+        g--;
+        break;
+    }
+    this.setState({
+      count: g
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <button id="jia" onClick={g => this.onClicked(g.currentTarget.id)}>
+          +
+        </button>
+        <span>{this.state.count}</span>
+        <button id="jian" onClick={g => this.onClicked(g.currentTarget.id)}>
+          -
+        </button>
+      </div>
+    );
+  }
+}
