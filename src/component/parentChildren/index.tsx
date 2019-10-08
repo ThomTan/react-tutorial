@@ -17,14 +17,20 @@ export default class ParentChildren extends Component<{}, OwnState> {
     this.state = {
       list: []
     };
+    this.txtAddDom = React.createRef();
   }
 
-  randomNumber = (): number => Math.round(Math.random() * 100000);
+  private randomNumber = (): number => Math.round(Math.random() * 100000);
+
+  private txtAddDom: React.RefObject<HTMLInputElement>;
 
   addTxtClick(): void {
-    var txtAddDom = this.refs.txtAdd as HTMLInputElement;
-    if (!txtAddDom) return;
-    const txt = txtAddDom.value;
+    //var txtAddDom = this.refs.txtAdd as HTMLInputElement;
+    //if (!txtAddDom) return;
+    var dom = this.txtAddDom.current;
+    console.log(this.txtAddDom);
+    if (!dom) return;
+    const txt = dom.value;
     if (!txt) return;
     const obj: Text = { id: this.randomNumber(), txt: txt };
     this.setState({
