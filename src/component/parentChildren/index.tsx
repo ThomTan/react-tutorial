@@ -25,10 +25,8 @@ export default class ParentChildren extends Component<{}, OwnState> {
   private txtAddDom: React.RefObject<HTMLInputElement>;
 
   addTxtClick(): void {
-    //var txtAddDom = this.refs.txtAdd as HTMLInputElement;
-    //if (!txtAddDom) return;
     var dom = this.txtAddDom.current;
-    console.log(this.txtAddDom);
+    // console.log(this.txtAddDom);
     if (!dom) return;
     const txt = dom.value;
     if (!txt) return;
@@ -41,7 +39,7 @@ export default class ParentChildren extends Component<{}, OwnState> {
   render() {
     return (
       <div>
-        <input type="text" ref="txtAdd" />
+        <input type="text" ref={this.txtAddDom} />
         <button id="btnAdd" onClick={() => this.addTxtClick()}>
           添加
         </button>
