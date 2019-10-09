@@ -25,10 +25,7 @@ export default class ParentChildren extends Component<{}, OwnState> {
   private txtAddDom: React.RefObject<HTMLInputElement>;
 
   addTxtClick(): void {
-    var dom = this.txtAddDom.current;
-    // console.log(this.txtAddDom);
-    if (!dom) return;
-    const txt = dom.value;
+    const txt = this.txtAddDom.current.value;
     if (!txt) return;
     const obj: Text = { id: this.randomNumber(), txt: txt };
     this.setState({
