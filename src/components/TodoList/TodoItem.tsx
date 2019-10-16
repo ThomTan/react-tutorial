@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import React, { PureComponent } from 'react'
 
 const nonp = () => {}
 
@@ -20,22 +21,22 @@ export default class TodoItem extends Component<Props> {
     onCompeletedChange(id)
   }
 
-  componentDidUpdate(prevProps: Props) {
+  shouldComponentUpdate(prevProps: Props) {
     return prevProps.isCompleted !== this.props.isCompleted
   }
 
   render() {
     const { isCompleted, title } = this.props
+    console.log(this)
     return (
       <li>
         <input
           type="checkbox"
-          checked={isCompleted}
+          defaultChecked={isCompleted}
           onClick={this.handleCheckboxChange}
         />
         <span>
-          {title}
-          {isCompleted ? '已完成' : '未完成'}
+          {title} - {isCompleted ? '已完成' : '未完成'}
         </span>
       </li>
     )
